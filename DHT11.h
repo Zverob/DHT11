@@ -20,6 +20,7 @@ class DHT11 {
 		uint8_t decTdata;
 		uint8_t crc;
 		uint8_t read8bit();
+		void waitMilliseconds(unsigned long data);
 };
 
 #endif

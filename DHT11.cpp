@@ -29,9 +29,9 @@ uint8_t DHT11::update() {
 	crc = 0;
 	pinMode(dataPin, OUTPUT);
 	digitalWrite(dataPin, HIGH);
-	delay(18);
+	waitMilliseconds(18);
 	digitalWrite(dataPin, LOW);
-	delay(18);
+	waitMilliseconds(18);
 	pinMode(dataPin, INPUT);
 	previousMillis = millis();
 	while(digitalRead(dataPin)) {
@@ -77,4 +77,10 @@ uint8_t DHT11::read8bit() {
 		}
 	}
 	return tmp;
+}
+
+void DHT11::waitMilliseconds(unsigned long data) {
+	unsigned long previousMillis = 0;
+	previousMillis = millis();
+	while(millis()-previousMillis<data);
 }
